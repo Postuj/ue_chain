@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package chain;
+
+import "google/protobuf/empty.proto";
+
+message Transaction {
+  string from = 1;
+  string to = 2;
+  uint32 amount = 3;
+  bytes signature = 4;
+}
+
+message BalanceRequest {
+  string address = 1;
+}
+
+message BalanceResponse {
+  uint32 balance = 1;
+}
+
+message Block {
+  uint32 block_number = 1;
+  string previousHash = 2;
+  string nonce = 3;
+  string miner_address = 4;
+  Transaction transaction = 5;
+}
+
+message BlockRequest {
+    uint32 block_number = 1;
+}
+
+message BlocksResponse {
+    repeated Block blocks = 1;
+}
+
+service ChainService {
+  rpc getBalance(BalanceRequest) returns (BalanceResponse);
+  rpc sendTransaction(Transaction) returns (google.protobuf.Empty);
+  rpc getBlocks(BlockRequest) returns (BlocksResponse);
+}

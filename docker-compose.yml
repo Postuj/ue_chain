@@ -1,0 +1,40 @@
+version: "3"
+services:
+  chain:
+    build:
+      context: apps/chain
+      dockerfile: Dockerfile
+    ports:
+      - "3160:3160"
+    environment:
+      - ENV=prod
+    volumes:
+      - ./apps/chain/src:/chain/src
+
+  wallet:
+    build:
+      context: apps/wallet
+      dockerfile: Dockerfile
+    ports:
+      - "8001:8001"
+    environment:
+      - GENESIS=true
+    volumes:
+      - ./apps/wallet/src:/wallet/src
+    depends_on:
+      - chain
+
+  wallet_2:
+    image: ue_chain_wallet
+    ports:
+        - "8002:8001"
+    depends_on:
+      - wallet
+
+  wallet_3:
+    image: ue_chain_wallet
+    ports:
+        - "8003:8001"
+    depends_on:
+      - wallet_2
+  
