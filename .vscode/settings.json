@@ -1,0 +1,10 @@
+{
+  "files.exclude": {
+    "**/node_modules": true
+  },
+  "material-icon-theme.folders.associations": {
+    "chain": "Contract",
+    "wallet": "Secure",
+    "delivery": "Tools"
+  }
+}

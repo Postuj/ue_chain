@@ -1,11 +1,13 @@
+# Chain instance
+
+Simple blockchain instance implemented using [Node.js](https://nodejs.org/en/), which was not best choice for creating this kind of application and I do regret choosing it. Application communicates via [gRPC](https://grpc.io/).
+
+## Example usage
+```ts
 import 'dotenv/config';
 import { Chain } from './domain/models/chain/chain';
 import { MinerWallet } from './domain/models/wallets/minerWallet';
 import { PersonalWallet as Wallet } from './domain/models/wallets/wallet';
-
-console.log('ENVIRONMENT:', process.env.ENV);
-console.log('GENESIS:', process.env.GENESIS === 'true');
-console.log('DIFFICULTY:', process.env.DIFFICULTY);
 
 const minerWallet = MinerWallet.instance;
 const john = new Wallet();
@@ -24,3 +26,5 @@ console.log('dave', Chain.instance.getAccountBalance(dave.address));
 console.log('john', Chain.instance.getAccountBalance(john.address));
 console.log('amanda', Chain.instance.getAccountBalance(amanda.address));
 console.log('minerWallet', Chain.instance.getAccountBalance(minerWallet.address));
+
+```
