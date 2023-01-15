@@ -5,7 +5,7 @@
 Simple blockchain project consisting of two applications:
 
 1. [Chain instance / miner](https://github.com/Postuj/ue_chain/tree/master/apps/chain)
-2. [Wallet app](https://github.com/Postuj/ue_chain/blob/master/apps/wallet/README.md)
+2. [Wallet app](https://github.com/Postuj/ue_chain/blob/master/apps/wallet)
 
 Both apps communicate via [gRPC](https://grpc.io/).
 
