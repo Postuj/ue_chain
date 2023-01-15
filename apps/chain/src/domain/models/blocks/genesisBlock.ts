@@ -7,7 +7,7 @@ export class GenesisBlock extends Block {
   public readonly timestamp: number = Date.now();
   public readonly previousHash: string = 'genesis';
   constructor() {
-    super(1, 'genesis', new GenesisTransaction(), 'genesis');
+    super(0, 'genesis', new GenesisTransaction(), 'genesis');
   }
 
   public get hash(): string {

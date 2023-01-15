@@ -39,20 +39,22 @@ export class Chain {
     console.log('🎆 Block mined, solution: ', minedBlock.nonce);
 
     this.blocks.push(block);
+    if (this.blocks.length === 4) console.log(this.blocks);
   }
 
   public getAccountBalance(address: string): number {
+    const addressHex = Buffer.from(address, 'utf-8').toString('hex');
     let balance = 0;
 
     const blocksWithAccountTransactions = this.blocks.filter(
-      (block) => block.transaction.from === address || block.transaction.to === address,
+      (block) => block.transaction.from === addressHex || block.transaction.to === addressHex,
     );
 
     blocksWithAccountTransactions.forEach((block) => {
       const transaction = block.transaction;
-      if (block.minerAddress === address) balance += ChainConfig.MINING_REWARD;
-      if (transaction.to === address) balance += transaction.amount;
-      if (transaction.from === address) balance -= transaction.amount;
+      if (block.minerAddress === addressHex) balance += ChainConfig.MINING_REWARD;
+      if (transaction.to === addressHex) balance += transaction.amount;
+      if (transaction.from === addressHex) balance -= transaction.amount;
     });
 
     return balance;
