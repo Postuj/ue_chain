@@ -39,7 +39,6 @@ export class Chain {
     console.log('🎆 Block mined, solution: ', minedBlock.nonce);
 
     this.blocks.push(block);
-    if (this.blocks.length === 4) console.log(this.blocks);
   }
 
   public getAccountBalance(address: string): number {

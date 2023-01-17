@@ -6,6 +6,7 @@
     "build": "yarn clean && yarn tsc && yarn copy-proto-files",
     "clean": "rm -rf ./dist",
     "start": "cross-env ENV=dev yarn ts-node src/main.ts",
+    "start:example": "cross-env ENV=dev yarn ts-node src/example.ts",
     "start:genesis": "cross-env ENV=dev GENESIS=true yarn ts-node src/main.ts",
     "start:prod": "cross-env ENV=prod node dist/main.js",
     "copy-proto-files": "cp ./src/delivery/proto/*.proto ./dist/delivery/proto",
