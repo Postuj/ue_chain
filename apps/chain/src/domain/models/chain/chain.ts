@@ -46,7 +46,10 @@ export class Chain {
     let balance = 0;
 
     const blocksWithAccountTransactions = this.blocks.filter(
-      (block) => block.transaction.from === addressHex || block.transaction.to === addressHex,
+      (block) =>
+        block.transaction.from === addressHex ||
+        block.transaction.to === addressHex ||
+        block.minerAddress === addressHex,
     );
 
     blocksWithAccountTransactions.forEach((block) => {

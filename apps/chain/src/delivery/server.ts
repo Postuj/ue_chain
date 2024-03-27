@@ -21,5 +21,3 @@ const chainPkg = proto.chain;
 const chainController = new ChainController();
 export const server = new grpc.Server();
 server.addService(chainPkg.ChainService.service, chainController);
-
-
